@@ -27,3 +27,4 @@ make_corLong<- function(snpsGeno,SampleDataPath,ID_col="ID"){
 #     corLong$rowBatch <- brain_sentrix_present$Batch[brain_sentrix_match_row]
 #     corLong$colBatch <- brain_sentrix_present$Batch[brain_sentrix_match_col]
 }
+## test permissions
