@@ -22,3 +22,4 @@ make_corLong<- function(snpsGeno,SampleDataPath,ID_col="ID"){
     corLong<-dplyr::left_join(corLong,sampleData, by = c("colSample" = paste0("col",ID_col)))
     return(corLong)
 }
+## test permissions
