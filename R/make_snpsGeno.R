@@ -7,7 +7,9 @@
 #'
 #' @examples
 #' genotyped<-readVcf("Data/LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf","hg38")
-#' test<-make_snpsGeno(genotyped)
+#' snpsGeno<-make_snpsGeno(genotyped)
+#' jaffelab::corner(snpsGeno)
+#' head(colnames(snpsGeno))
 make_snpsGeno<-function(genotyped){
     snpsGeno = VariantAnnotation::geno(genotyped)$GT
     snpsGeno[snpsGeno == "./."] = NA
