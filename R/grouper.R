@@ -1,24 +1,48 @@
-#' Title
+#' grouper
 #'
-#' @param samples
-#' @param corTable
-#' @param cutoff
-#' @param s1
-#' @param s2
-#' @param records
-#' @param id
+#'Create groups of sample from a cor table with correlation >= cutoff
 #'
-#' @return
+#' @param samples list of samples (BrNum and/or RNum) to subset cor table by
+#' @param corTable Table of paiwise correlation between samples
+#' @param cutoff corrlation threshold for samples to be grouped together
+#' @param s1 Name of first column that contains sample names
+#' @param s2 Name of second column that contains sample names
+#'
+#' @return List of groups found in the cor table
 #' @export
 #'
 #' @examples
-grouper <- function(samples, corTable, cutoff = 0.59,  s1 = "rowSample", s2 = "colSample", records, id){
+#' cor_test <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, ID_col1 = "Sample")
+#' g <- grouper(cor_test)
+#'
+
+grouper <- function(corTable, cutoff = 0.59,  s1 = "row_sample", s2 = "col_sample"){
+
+  samples <- unique(c(corTable[[s1]], corTable[[s2]]))
+  message(length(samples))
+  groups <- purrr::map(samples, ~.grouper(.x, corTable, cutoff, s1, s2))
+  groups <- unique(groups)
+  return(groups)
+
+}
+
+.grouper <- function(samples, corTable, cutoff,  s1, s2){
+
   ct <- subset(corTable, cor >= cutoff & (corTable[[s1]] %in% samples | corTable[[s2]] %in% samples))
   new_samples <- unique(c(ct[[s1]] , ct[[s2]]))
+
   if(!all(new_samples %in% samples)){
-    return(grouper(new_samples, corTable, cutoff, s1, s2, records, id))
+    return(.grouper(new_samples, corTable, cutoff, s1, s2))
   } else{
-    record <- subset(records, records[[id]] %in% samples)
+
+    ## make record table
+    record_row <- ct[,grepl("row_",colnames(ct))]
+    record_col <- ct[,grepl("col_",colnames(ct))]
+    colnames(record_row) <- gsub("row_","",colnames(record_row))
+    colnames(record_col) <- gsub("col_","",colnames(record_col))
+
+    record <- rbind(record_row, record_col)
+
     bn <- unique(record[["BrNum"]])
     bn <- bn[order(bn)]
     samples <- samples[order(samples)]
