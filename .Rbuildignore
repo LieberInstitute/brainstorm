@@ -1,3 +1,4 @@
 ^brainstorm\.Rproj$
 ^\.Rproj\.user$
 ^dev$
+^data-raw$
