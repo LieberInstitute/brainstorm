@@ -17,3 +17,44 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(brainstorm)
 ```
+
+#Prep Data
+## Prep DNA data
+```{r}
+
+```
+
+## Prep RNA data
+```{r}
+
+```
+
+# Build Correlation Tables
+## DNA vs. DNA
+```{r}
+
+```
+
+## RNA vs. RNA
+```{r}
+
+```
+
+## DNA vs. RNA
+```{r}
+
+```
+
+# Run Grouper
+```{r}
+
+```
+
+## Find problem groups & samples
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+
