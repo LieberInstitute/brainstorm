@@ -3,3 +3,7 @@ test_that("Number of groups in cor_test", {
   g <- grouper(cor_test)
   expect_equal(length(g), 2)
 })
+
+test_that("Error on Missing Cols",{
+  expect_error(grouper(corTest, s1 = "Error_col"))
+})

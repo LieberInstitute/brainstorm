@@ -18,8 +18,11 @@
 
 grouper <- function(corTable, cutoff = 0.59,  s1 = "row_sample", s2 = "col_sample"){
 
+  .check_cols(table = corTable, check_colnames = c(s1, s2), table_name = "corTable")
+
   samples <- unique(c(corTable[[s1]], corTable[[s2]]))
   message(length(samples))
+
   groups <- purrr::map(samples, ~.grouper(.x, corTable, cutoff, s1, s2))
   groups <- unique(groups)
   return(groups)
@@ -41,7 +44,7 @@ grouper <- function(corTable, cutoff = 0.59,  s1 = "row_sample", s2 = "col_sampl
     colnames(record_row) <- gsub("row_","",colnames(record_row))
     colnames(record_col) <- gsub("col_","",colnames(record_col))
 
-    record <- rbind(record_row, record_col)
+    record <- cbind(record_row, record_col)
 
     bn <- unique(record[["BrNum"]])
     bn <- bn[order(bn)]
