@@ -16,37 +16,92 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(brainstorm)
+library(jaffelab)
+library(VariantAnnotation)
+library(here)
+library(tidyverse)
 ```
 
 #Prep Data
 ## Prep DNA data
 ```{r}
-
+genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
+snpsGeno <- make_snpsGeno(genotyped)
+corner(snpsGeno)
 ```
 
 ## Prep RNA data
+### Filter "snps called" data
 ```{r}
+dim(called)
+called_filter <- filter_called(called)
+dim(called_filter)
+```
 
+### Create snpsGeno2 and snpsCalled
+```{r}
+snpsRNA <- make_snpsRNA(genotyped, called_filtered)
+corner(snpsRNA$snpsGeno2)
+corner(snpsRNA$snpsCalled)
 ```
 
 # Build Correlation Tables
 ## DNA vs. DNA
 ```{r}
-
+brain_sentrix <- read.csv(here("Data","brain_sentrix.csv"))
+corLong_dna_dna <- make_corLong(snpsGeno,BrainTable1=brain_sentrix)
+head(corLong_dna_dna)
 ```
+```{r}
+corLong_dna_dna %>% 
+  filter(row_BrNum == col_BrNum) %>%
+  ggplot(aes(x = cor)) +
+  geom_density() +
+  geom_vline(xintercept = 0.59, color = "red", linetype = "dashed")
+```
+
+
 
 ## RNA vs. RNA
 ```{r}
+pd_swap <- read.csv(here("Data","pd_swap.csv"))
+corLong_rna_rna <- make_corLong(snps1 = snpsRNA$snpsCalled, 
+                                BrainTable1 = pd_swap,
+                                ID_col1 = "SAMPLE_ID")
+head(corLong_rna_rna)
+```
 
+```{r}
+corLong_rna_rna %>% 
+  filter(row_BrNum == col_BrNum) %>%
+  ggplot(aes(x = cor)) +
+  geom_density() +
+  geom_vline(xintercept = 0.59, color = "red", linetype = "dashed")
 ```
 
 ## DNA vs. RNA
 ```{r}
+corLong_dna_rna <- make_corLong(snps1 = snpsRNA$snpsGeno2, 
+                                snps2 = snpsRNA$snpsCalled, 
+                                BrainTable1 = brain_sentrix,
+                                BrainTable2 = pd_swap,
+                                ID_col1 = "ID",
+                                ID_col2 = "SAMPLE_ID")
 
+head(corLong_dna_rna)
+```
+
+```{r}
+corLong_dna_rna %>% 
+  filter(row_BrNum == col_BrNum) %>%
+  ggplot(aes(x = cor)) +
+  geom_density() +
+  geom_vline(xintercept = 0.59, color = "red", linetype = "dashed")
 ```
 
 # Run Grouper
 ```{r}
+dna_dna_groups <- grouper(corLong_dna_dna)
 
 ```
 
