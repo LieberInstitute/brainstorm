@@ -9,42 +9,41 @@
 #'
 #' @examples
 #'
-#'called_filter <- filter_called(called)
-#'snpsRNA <- make_snpsRNA(genotyped, called_filtered)
-#'jaffelab::corner(snpsRNA$snpsGeno2)
-#'jaffelab::corner(snpsRNA$snpsCalled)
-#'
-#'@importFrom SummarizedExperiment rowRanges
-make_snpsRNA <- function(genotyped, called_filtered){
+#' called_filter <- filter_called(called)
+#' snpsRNA <- make_snpsRNA(genotyped, called_filtered)
+#' jaffelab::corner(snpsRNA$snpsGeno2)
+#' jaffelab::corner(snpsRNA$snpsCalled)
+#' @importFrom SummarizedExperiment rowRanges
+make_snpsRNA <- function(genotyped, called_filtered) {
 
-  ## subset to intersection
-  n = intersect(rownames(called_filter), names(genotyped))
-  genotyped = genotyped[n,]
-  called = called[n,]
-  message("# matching snps: ", table(unlist(Biostrings::nchar(VariantAnnotation::alt(called)))))
+    ## subset to intersection
+    n <- intersect(rownames(called_filter), names(genotyped))
+    genotyped <- genotyped[n, ]
+    called <- called[n, ]
+    message("# matching snps: ", table(unlist(Biostrings::nchar(VariantAnnotation::alt(called)))))
 
-  ## make snpGeno2
-  snpsGeno2 = VariantAnnotation::geno(genotyped)$GT
-  snpsGeno2[snpsGeno2 == "./."] = NA
-  snpsGeno2[snpsGeno2 == "0|0"] = 0
-  snpsGeno2[snpsGeno2 == "1|0"] = 1
-  snpsGeno2[snpsGeno2 == "0|1"] = 1
-  snpsGeno2[snpsGeno2 == "1|1"] = 2
-  class(snpsGeno2) = "numeric"
+    ## make snpGeno2
+    snpsGeno2 <- VariantAnnotation::geno(genotyped)$GT
+    snpsGeno2[snpsGeno2 == "./."] <- NA
+    snpsGeno2[snpsGeno2 == "0|0"] <- 0
+    snpsGeno2[snpsGeno2 == "1|0"] <- 1
+    snpsGeno2[snpsGeno2 == "0|1"] <- 1
+    snpsGeno2[snpsGeno2 == "1|1"] <- 2
+    class(snpsGeno2) <- "numeric"
 
-  ## flip
-  table(rowRanges(called)$REF == rowRanges(genotyped)$REF  |
-          rowRanges(called)$REF == as.character(unlist(VariantAnnotation::alt(genotyped))))
-  toFlip = which(rowRanges(called)$REF != rowRanges(genotyped)$REF)
-  snpsGeno2[toFlip,] = 2-snpsGeno2[toFlip,]
+    ## flip
+    table(rowRanges(called)$REF == rowRanges(genotyped)$REF |
+        rowRanges(called)$REF == as.character(unlist(VariantAnnotation::alt(genotyped))))
+    toFlip <- which(rowRanges(called)$REF != rowRanges(genotyped)$REF)
+    snpsGeno2[toFlip, ] <- 2 - snpsGeno2[toFlip, ]
 
-  ## VCF string to int - RNA style
-  snpsCalled = VariantAnnotation::geno(called)$GT
-  snpsCalled[snpsCalled == "./."] = 0
-  snpsCalled[snpsCalled == "0/1"] = 1
-  snpsCalled[snpsCalled == "1/1"] = 2
-  class(snpsCalled) = "numeric"
+    ## VCF string to int - RNA style
+    snpsCalled <- VariantAnnotation::geno(called)$GT
+    snpsCalled[snpsCalled == "./."] <- 0
+    snpsCalled[snpsCalled == "0/1"] <- 1
+    snpsCalled[snpsCalled == "1/1"] <- 2
+    class(snpsCalled) <- "numeric"
 
-  snpsRNA <- list(snpsGeno2 = snpsGeno2, snpsCalled = snpsCalled)
-  return(snpsRNA)
+    snpsRNA <- list(snpsGeno2 = snpsGeno2, snpsCalled = snpsCalled)
+    return(snpsRNA)
 }
