@@ -3,3 +3,4 @@
 ^dev$
 ^data-raw$
 ^codecov\.yml$
+^\.github$

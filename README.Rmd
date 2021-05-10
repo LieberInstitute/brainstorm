@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/joshstolz/brainstorm/branch/master/graph/badge.svg)](https://codecov.io/gh/joshstolz/brainstorm?branch=master)
 [![Codecov test coverage](https://codecov.io/gh/LieberInstitute/brainstorm_package/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/brainstorm_package?branch=master)
+[![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm_package/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm_package/actions)
 <!-- badges: end -->
 
 The goal of `brainstorm` is to ...
