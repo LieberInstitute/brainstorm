@@ -25,7 +25,7 @@ library(ggplot2)
 #Prep Data
 ## Prep DNA data
 ```{r}
-genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
+# genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
 snpsGeno <- make_snpsGeno(genotyped)
 snpsGeno[1:5,1:5]
 ```
