@@ -14,6 +14,9 @@
 #' jaffelab::corner(snpsRNA$snpsGeno2)
 #' jaffelab::corner(snpsRNA$snpsCalled)
 #' @importFrom SummarizedExperiment rowRanges
+#' @importFrom VariantAnnotation alt
+#' @importFrom VariantAnnotation geno
+#' @importFrom Biostrings nchar
 make_snpsRNA <- function(genotyped, called_filtered) {
 
     ## subset to intersection

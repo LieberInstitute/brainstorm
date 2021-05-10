@@ -10,6 +10,7 @@
 #' snpsGeno <- make_snpsGeno(genotyped)
 #' jaffelab::corner(snpsGeno)
 #' head(colnames(snpsGeno))
+#' @importFrom VariantAnnotation geno
 make_snpsGeno <- function(genotyped) {
     snpsGeno <- VariantAnnotation::geno(genotyped)$GT
     snpsGeno[snpsGeno == "./."] <- NA
