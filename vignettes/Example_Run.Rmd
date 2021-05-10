@@ -41,7 +41,9 @@ dim(called_filter)
 ### Create snpsGeno2 and snpsCalled
 ```{r}
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
+print("Matching Genotype snps")
 corner(snpsRNA$snpsGeno2)
+print("Called RNA snsp")
 corner(snpsRNA$snpsCalled)
 ```
 
