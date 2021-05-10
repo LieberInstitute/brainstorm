@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(brainstorm)
-library(jaffelab)
 library(VariantAnnotation)
 library(here)
 library(tidyverse)
@@ -27,7 +26,7 @@ library(tidyverse)
 ```{r}
 genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
 snpsGeno <- make_snpsGeno(genotyped)
-corner(snpsGeno)
+snpsGeno[1:5,1:5]
 ```
 
 ## Prep RNA data
@@ -42,9 +41,9 @@ dim(called_filter)
 ```{r}
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
 print("Matching Genotype snps")
-corner(snpsRNA$snpsGeno2)
+snpsRNA$snpsGeno2[1:5,1:5]
 print("Called RNA snsp")
-corner(snpsRNA$snpsCalled)
+snpsRNA$snpsCalled[1:5,1:5]
 ```
 
 # Build Correlation Tables
