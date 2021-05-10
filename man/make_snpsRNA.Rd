@@ -25,5 +25,4 @@ called_filter <- filter_called(called)
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
 jaffelab::corner(snpsRNA$snpsGeno2)
 jaffelab::corner(snpsRNA$snpsCalled)
-
 }

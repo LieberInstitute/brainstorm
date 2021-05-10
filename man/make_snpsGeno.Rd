@@ -16,8 +16,8 @@ make_snpsGeno(genotyped)
 Title
 }
 \examples{
-genotyped<-readVcf("Data/LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf","hg38")
-snpsGeno<-make_snpsGeno(genotyped)
+genotyped <- readVcf("Data/LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf", "hg38")
+snpsGeno <- make_snpsGeno(genotyped)
 jaffelab::corner(snpsGeno)
 head(colnames(snpsGeno))
 }

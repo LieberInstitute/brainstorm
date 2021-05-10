@@ -26,5 +26,4 @@ Create groups of sample from a cor table with correlation >= cutoff
 \examples{
 cor_test <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, ID_col1 = "Sample")
 g <- grouper(cor_test)
-
 }

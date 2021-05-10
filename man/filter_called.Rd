@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter_called.R
 \name{filter_called}
 \alias{filter_called}
-\title{Title}
+\title{filter_called}
 \usage{
 filter_called(
   called,
@@ -23,14 +23,10 @@ filter_called(
 
 }
 \description{
-Title
+filter_called
 }
 \examples{
-geno_filtered <- filter_called(genotyped)
 dim(called)
-
-#222 5568
 called_filter <- filter_called(called)
 dim(called_filter)
-#748 5568
 }
