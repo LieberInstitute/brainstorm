@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 # brainstorm
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/joshstolz/brainstorm/branch/master/graph/badge.svg)](https://codecov.io/gh/joshstolz/brainstorm?branch=master)
 [![Codecov test coverage](https://codecov.io/gh/LieberInstitute/brainstorm_package/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/brainstorm_package?branch=master)
 [![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm_package/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm_package/actions)
 <!-- badges: end -->
@@ -42,28 +41,12 @@ BiocManager::install("joshstolz/brainstorm")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### TBD...
 
 ```{r example, eval = requireNamespace('brainstorm')}
 library("brainstorm")
 ## basic example code
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
 
 ## Citation
 

@@ -34,4 +34,7 @@ Imports:
     SummarizedExperiment,
     VariantAnnotation,
     Biostrings,
-    IRanges
+    IRanges,
+    here,
+    dplyr,
+    ggplot2

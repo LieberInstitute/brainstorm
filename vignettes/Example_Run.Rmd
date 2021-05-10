@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 library(brainstorm)
 library(VariantAnnotation)
 library(here)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 ```
 
 #Prep Data
