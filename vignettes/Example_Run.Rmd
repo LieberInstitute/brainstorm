@@ -24,7 +24,7 @@ library(ggplot2)
 
 #Prep Data
 ## Prep DNA data
-```{r}
+```{r, eval=FALSE}
 # genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
 snpsGeno <- make_snpsGeno(genotyped)
 snpsGeno[1:5,1:5]
@@ -32,14 +32,14 @@ snpsGeno[1:5,1:5]
 
 ## Prep RNA data
 ### Filter "snps called" data
-```{r}
+```{r, eval=FALSE}
 dim(called)
 called_filter <- filter_called(called)
 dim(called_filter)
 ```
 
 ### Create snpsGeno2 and snpsCalled
-```{r}
+```{r, eval=FALSE}
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
 print("Matching Genotype snps")
 snpsRNA$snpsGeno2[1:5,1:5]
@@ -49,12 +49,12 @@ snpsRNA$snpsCalled[1:5,1:5]
 
 # Build Correlation Tables
 ## DNA vs. DNA
-```{r}
+```{r, eval=FALSE}
 brain_sentrix <- read.csv(here("Data","brain_sentrix.csv"))
 corLong_dna_dna <- make_corLong(snpsGeno,BrainTable1=brain_sentrix)
 head(corLong_dna_dna)
 ```
-```{r}
+```{r, eval=FALSE}
 corLong_dna_dna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -65,7 +65,7 @@ corLong_dna_dna %>%
 
 
 ## RNA vs. RNA
-```{r}
+```{r, eval=FALSE}
 pd_swap <- read.csv(here("Data","pd_swap.csv"))
 corLong_rna_rna <- make_corLong(snps1 = snpsRNA$snpsCalled, 
                                 BrainTable1 = pd_swap,
@@ -73,7 +73,7 @@ corLong_rna_rna <- make_corLong(snps1 = snpsRNA$snpsCalled,
 head(corLong_rna_rna)
 ```
 
-```{r}
+```{r, eval=FALSE}
 corLong_rna_rna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -82,7 +82,7 @@ corLong_rna_rna %>%
 ```
 
 ## DNA vs. RNA
-```{r}
+```{r, eval=FALSE}
 corLong_dna_rna <- make_corLong(snps1 = snpsRNA$snpsGeno2, 
                                 snps2 = snpsRNA$snpsCalled, 
                                 BrainTable1 = brain_sentrix,
@@ -93,7 +93,7 @@ corLong_dna_rna <- make_corLong(snps1 = snpsRNA$snpsGeno2,
 head(corLong_dna_rna)
 ```
 
-```{r}
+```{r, eval=FALSE}
 corLong_dna_rna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -102,7 +102,7 @@ corLong_dna_rna %>%
 ```
 
 # Run Grouper
-```{r}
+```{r, eval=FALSE}
 dna_dna_groups <- grouper(corLong_dna_dna)
 
 ```
