@@ -63,7 +63,7 @@ Below is the citation output from using `citation('brainstorm')` in R. Please
 run this yourself to check for any updates on how to cite __brainstorm__.
 
 ```{r 'citation', eval = requireNamespace('brainstorm')}
-print(citation('brainstorm'), bibtex = TRUE)
+print(citation("brainstorm"), bibtex = TRUE)
 ```
 
 Please note that the `brainstorm` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
