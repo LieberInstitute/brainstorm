@@ -1,21 +1,20 @@
 Package: brainstorm
 Title: Validating Sample Identiy Through RNA-seq and DNA Genotyping Correlation
 Version: 0.99.0
-Date: 2021-02-09
+Date: 2021-05-20
 Authors@R: 
-c(
+    c(
     person(c("Joshua", "Michael"), "Stolz", role = c("aut", "cre"), 
     email = "josh.stolz@libd.org", comment = c(ORCID = "0000-0003-2140-308X")),
     person(c("Louise", "A."), "Huuki", role = c("aut"), 
     email = "lahuuki@gmail.com", comment = c(ORCID = "0000-0001-5148-3602")),
     person("Leonardo", "Collado-Torres", role = c("ctb"), 
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X"))
-    
     )
 Description: Perform quality control analysis to validate the identity of samples
-between multiple DNA or RNA samples, and between DNA and RNA. Preprocess VCF files
-into integer SNP arrays. Correlate SNPs, and form groups of suspected related samples. 
-This is useful to identify and resolve mislabled or "swapped" samples in the dataset.
+    between multiple DNA or RNA samples, and between DNA and RNA. Preprocess VCF files
+    into integer SNP arrays. Correlate SNPs, and form groups of suspected related samples. 
+    This is useful to identify and resolve mislabled or "swapped" samples in the dataset.
 License: Artistic-2.0
 URL: https://github.com/LieberInstitute/brainstorm_package
 BugReports: https://support.bioconductor.org/t/brainstorm
