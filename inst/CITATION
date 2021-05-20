@@ -1,0 +1,15 @@
+c(
+
+    bibentry(bibtype="article",
+        title = "Validating Sample Identiy Through RNA-seq and DNA Genotyping Correlation",
+        author = personList(
+            as.person("Joshua M. Stolz"),
+            as.person("Louise A. Huuki"),
+            as.person("Leonardo Collado-Torres")
+        ),
+        year = 2021,
+        journal = "bioRxiv",
+        doi = "10.1101/TODO",
+        url = "https://www.biorxiv.org/content/10.1101/TODO"
+    )
+ )
