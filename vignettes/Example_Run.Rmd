@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE
 )
 ```
 
@@ -25,7 +26,7 @@ library(purrr)
 
 #Prep Data
 ## Prep DNA data
-```{r, eval=FALSE}
+```{r "prep snpsGeno"}
 genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
 snpsGeno <- make_snpsGeno(genotyped)
 snpsGeno[1:5,1:5]
