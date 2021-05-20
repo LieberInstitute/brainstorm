@@ -37,10 +37,15 @@ BiocManager::install("joshstolz/brainstorm")
 
 ### Step 1. Prepare the snp Data
 
-![Data Prep](images/flow_data_prep.png)  
-\#\#\# Step 2. Correlate the Data and Identify Groups ![Corelation &
-Grouping](images/flow_cor_group.png)  
-\#\#\# Step 3. Identify and Resolve Swaps Coming Soon…
+![Data Prep](images/flow_data_prep.png)
+
+### Step 2. Correlate the Data and Identify Groups
+
+![Correlation & Grouping](images/flow_cor_group.png)
+
+### Step 3. Identify and Resolve Swaps
+
+Coming Soon…
 
 ## Example
 
@@ -58,22 +63,22 @@ Please run this yourself to check for any updates on how to cite
 **brainstorm**.
 
 ``` r
-print(citation('brainstorm'), bibtex = TRUE)
+print(citation("brainstorm"), bibtex = TRUE)
 #> 
-#> To cite package 'brainstorm' in publications use:
-#> 
-#>   First Last (2021). brainstorm: What the Package Does (One Line, Title
-#>   Case). R package version 0.99.0.
-#>   https://github.com/joshstolz/brainstorm
+#> Stolz JM, Huuki LA, Collado-Torres L (2021). "Validating Sample Identiy
+#> Through RNA-seq and DNA Genotyping Correlation." _bioRxiv_. doi:
+#> 10.1101/TODO (URL: https://doi.org/10.1101/TODO), <URL:
+#> https://www.biorxiv.org/content/10.1101/TODO>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
-#>     title = {brainstorm: What the Package Does (One Line, Title Case)},
-#>     author = {First Last},
+#>   @Article{,
+#>     title = {Validating Sample Identiy Through RNA-seq and DNA Genotyping Correlation},
+#>     author = {Joshua M. Stolz and Louise A. Huuki and Leonardo Collado-Torres},
 #>     year = {2021},
-#>     note = {R package version 0.99.0},
-#>     url = {https://github.com/joshstolz/brainstorm},
+#>     journal = {bioRxiv},
+#>     doi = {10.1101/TODO},
+#>     url = {https://www.biorxiv.org/content/10.1101/TODO},
 #>   }
 ```
 
@@ -97,7 +102,7 @@ By contributing to this project, you agree to abide by its terms.
     *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
     customized to use [Bioconductor’s docker
     containers](https://www.bioconductor.org/help/docker/) and
-    *[BiocCheck](https://bioconductor.org/packages/3.12/BiocCheck)*.
+    *[BiocCheck](https://bioconductor.org/packages/3.13/BiocCheck)*.
 -   Code coverage assessment is possible thanks to
     [codecov](https://codecov.io/gh) and
     *[covr](https://CRAN.R-project.org/package=covr)*.
@@ -113,4 +118,4 @@ By contributing to this project, you agree to abide by its terms.
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.12/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.13/biocthis)*.
