@@ -16,8 +16,7 @@
 #' snpsRNA$snpsGeno2[1:5, 1:5]
 #' snpsRNA$snpsCalled[1:5, 1:5]
 #' @importFrom SummarizedExperiment rowRanges
-#' @importFrom VariantAnnotation alt
-#' @importFrom VariantAnnotation geno
+#' @importFrom VariantAnnotation alt geno
 #' @importFrom Biostrings nchar
 make_snpsRNA <- function(genotyped, called_filtered) {
 

@@ -16,7 +16,7 @@
 #' dim(called)
 #' called_filter <- filter_called(called)
 #' dim(called_filter)
-#' @import VariantAnnotation
+#' @importFrom VariantAnnotation info ref alt
 #' @importFrom Biostrings nchar
 #' @importFrom IRanges elementNROWS
 #' @importFrom GenomicRanges countOverlaps
