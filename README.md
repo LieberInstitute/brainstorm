@@ -6,8 +6,8 @@
 <!-- badges: start -->
 
 [![Codecov test
-coverage](https://codecov.io/gh/LieberInstitute/brainstorm_package/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/brainstorm_package?branch=master)
-[![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm_package/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm_package/actions)
+coverage](https://codecov.io/gh/LieberInstitute/brainstorm/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/brainstorm?branch=master)
+[![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm/actions)
 <!-- badges: end -->
 
 The goal of `brainstorm` is to match genotype and RNA-seq data to
