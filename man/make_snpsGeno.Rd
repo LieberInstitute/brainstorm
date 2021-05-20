@@ -7,7 +7,7 @@
 make_snpsGeno(genotyped)
 }
 \arguments{
-\item{genotype}{object from variantAnnotation::readVcf}
+\item{genotyped}{object from variantAnnotation::readVcf}
 }
 \value{
 snp array encoded as integers
