@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter_called.R
 \name{filter_called}
 \alias{filter_called}
-\title{filter_called}
+\title{Filter the Called snp array}
 \usage{
 filter_called(
   called,
@@ -20,10 +20,10 @@ filter_called(
 \item{min_VDB}{}
 }
 \value{
-
+Filtered snp array
 }
 \description{
-filter_called
+Filter the Called snp array
 }
 \examples{
 dim(called)

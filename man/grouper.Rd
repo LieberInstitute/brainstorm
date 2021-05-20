@@ -2,7 +2,7 @@
 % Please edit documentation in R/grouper.R
 \name{grouper}
 \alias{grouper}
-\title{grouper}
+\title{Find groups of correlating samples}
 \usage{
 grouper(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample")
 }

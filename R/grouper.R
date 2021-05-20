@@ -1,4 +1,4 @@
-#' grouper
+#' Find groups of correlating samples
 #'
 #' Create groups of sample from a cor table with correlation >= cutoff
 #'

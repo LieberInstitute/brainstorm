@@ -1,8 +1,8 @@
-#' Title
+#' Make the snp array for genotype data
 #'
 #' @param genotype object from variantAnnotation::readVcf
 #'
-#' @return
+#' @return snp array encoded as integers
 #' @export
 #'
 #' @examples

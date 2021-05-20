@@ -20,12 +20,13 @@ library(VariantAnnotation)
 library(here)
 library(dplyr)
 library(ggplot2)
+library(purrr)
 ```
 
 #Prep Data
 ## Prep DNA data
 ```{r, eval=FALSE}
-# genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
+genotyped <- readVcf(here("Data","LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf") ,"hg38")
 snpsGeno <- make_snpsGeno(genotyped)
 snpsGeno[1:5,1:5]
 ```
@@ -33,6 +34,7 @@ snpsGeno[1:5,1:5]
 ## Prep RNA data
 ### Filter "snps called" data
 ```{r, eval=FALSE}
+data(called)
 dim(called)
 called_filter <- filter_called(called)
 dim(called_filter)
@@ -103,11 +105,24 @@ corLong_dna_rna %>%
 
 # Run Grouper
 ```{r, eval=FALSE}
-dna_dna_groups <- grouper(corLong_dna_dna)
-
+corLong_dna_dna2 <- corLong_dna_dna %>% filter(cor > 0.6)
+dna_dna_groups <- grouper(corLong_dna_dna2)
+length(dna_dna_groups)
+table(unlist(purrr::map(dna_dna_groups, "nBrNum")))
 ```
 
+```{r}
+map(c(corLong_dna_dna, corLong_rna_rna), colnames)
+corLong_all <- do.call("rbind",c(corLong_dna_dna, corLong_rna_rna))
+```
+
+
+
 ## Find problem groups & samples
+```{r}
+dna_dna_prob <- keep(dna_dna_groups, ~.x$nBrNum > 1)
+length(dna_dna_prob)
+```
 
 
 # Session Info

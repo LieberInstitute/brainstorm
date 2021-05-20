@@ -1,4 +1,5 @@
-#' filter_called
+#' Filter the Called snp array
+#'
 #'
 #' @param called CollapsedVCF containing filtered snp info for rna data
 #' @param DP_min
@@ -8,7 +9,7 @@
 #' @param overlaps
 #' @param min_VDB
 #'
-#' @return
+#' @return Filtered snp array
 #' @export
 #'
 #' @examples

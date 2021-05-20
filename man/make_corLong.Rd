@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_corLong.R
 \name{make_corLong}
 \alias{make_corLong}
-\title{make_corLong}
+\title{Create Long Correlation Tables}
 \usage{
 make_corLong(
   snps1,
@@ -31,7 +31,7 @@ Data frame with correlation between samples in snps1 (or between snps1 and snps2
 and ID info from BrainTables (at least BrNums for samples)
 }
 \description{
-make_corLong
+Compute pairwise correlations between one or two snp arrays, then convert to long format
 }
 \examples{
 x <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, BrainTable2 = test_BrTable, ID_col1 = "Sample", ID_col2 = "Sample")

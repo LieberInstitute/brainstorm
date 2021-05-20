@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_snpsGeno.R
 \name{make_snpsGeno}
 \alias{make_snpsGeno}
-\title{Title}
+\title{Make the snp array for genotype data}
 \usage{
 make_snpsGeno(genotyped)
 }
@@ -10,10 +10,10 @@ make_snpsGeno(genotyped)
 \item{genotype}{object from variantAnnotation::readVcf}
 }
 \value{
-
+snp array encoded as integers
 }
 \description{
-Title
+Make the snp array for genotype data
 }
 \examples{
 genotyped <- readVcf("Data/LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf", "hg38")

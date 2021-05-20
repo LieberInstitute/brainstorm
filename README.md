@@ -37,10 +37,10 @@ BiocManager::install("joshstolz/brainstorm")
 
 ### Step 1. Prepare the snp Data
 
-![Data Prep](images/flow_data_prep.png) \#\#\# Step 2. Correlate the
-Data and Identify Groups ![Corelation &
-Grouping](images/flow_cor_group.png) \#\#\# Step 3. Identify and Resolve
-Swaps
+![Data Prep](images/flow_data_prep.png)  
+\#\#\# Step 2. Correlate the Data and Identify Groups ![Corelation &
+Grouping](images/flow_cor_group.png)  
+\#\#\# Step 3. Identify and Resolve Swaps Coming Soon…
 
 ## Example
 

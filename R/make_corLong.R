@@ -1,4 +1,6 @@
-#' make_corLong
+#' Create Long Correlation Tables
+#'
+#' Compute pairwise correlations between one or two snp arrays, then convert to long format
 #'
 #' @param snps1 Table of snps, RNA or DNA,
 #' @param snps2 Table of snps, RNA or DNA, if NA snps1 will be compared to its self
