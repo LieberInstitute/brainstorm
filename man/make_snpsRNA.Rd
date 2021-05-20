@@ -22,6 +22,6 @@ Prep rna snps and create DNA & RNA snps (snpsGeno2) and RNA snps (snpsCalled)
 
 called_filter <- filter_called(called)
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
-jaffelab::corner(snpsRNA$snpsGeno2)
-jaffelab::corner(snpsRNA$snpsCalled)
+snpsRNA$snpsGeno2[1:5, 1:5]
+snpsRNA$snpsCalled[1:5, 1:5]
 }

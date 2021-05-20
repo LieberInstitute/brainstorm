@@ -13,8 +13,8 @@
 #'
 #' called_filter <- filter_called(called)
 #' snpsRNA <- make_snpsRNA(genotyped, called_filtered)
-#' jaffelab::corner(snpsRNA$snpsGeno2)
-#' jaffelab::corner(snpsRNA$snpsCalled)
+#' snpsRNA$snpsGeno2[1:5, 1:5]
+#' snpsRNA$snpsCalled[1:5, 1:5]
 #' @importFrom SummarizedExperiment rowRanges
 #' @importFrom VariantAnnotation alt
 #' @importFrom VariantAnnotation geno

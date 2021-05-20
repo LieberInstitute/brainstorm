@@ -17,7 +17,7 @@
 #' x <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, BrainTable2 = test_BrTable, ID_col1 = "Sample", ID_col2 = "Sample")
 #'
 #' snpsGeno <- make_snpsGeno(genotyped)
-#' jaffelab::corner(snpsGeno)
+#' snpsGeno[1:5, 1:5]
 #' brain_sentrix <- read.csv("Data/brain_sentrix.csv")
 #' corLongtest <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 #'

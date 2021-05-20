@@ -8,7 +8,7 @@
 #' @examples
 #' genotyped <- readVcf("Data/LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf", "hg38")
 #' snpsGeno <- make_snpsGeno(genotyped)
-#' jaffelab::corner(snpsGeno)
+#' snpsGeno[1:5,1:5]
 #' head(colnames(snpsGeno))
 #' @importFrom VariantAnnotation geno
 make_snpsGeno <- function(genotyped) {
