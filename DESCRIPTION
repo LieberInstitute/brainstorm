@@ -16,7 +16,7 @@ Description: Perform quality control analysis to validate the identity of sample
     into integer SNP arrays. Correlate SNPs, and form groups of suspected related samples. 
     This is useful to identify and resolve mislabled or "swapped" samples in the dataset.
 License: Artistic-2.0
-URL: https://github.com/LieberInstitute/brainstorm_package
+URL: https://github.com/LieberInstitute/brainstorm
 BugReports: https://support.bioconductor.org/t/brainstorm
 biocViews: Software, SNP, RNAseq, Preprocessing, QualityControl, GenotypingArray
 Encoding: UTF-8
