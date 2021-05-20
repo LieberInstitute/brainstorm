@@ -38,4 +38,5 @@ Imports:
     Biostrings,
     IRanges,
     dplyr,
-    GenomicRanges
+    GenomicRanges,
+    stats
