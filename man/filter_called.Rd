@@ -17,7 +17,17 @@ filter_called(
 \arguments{
 \item{called}{CollapsedVCF containing filtered snp info for rna data}
 
-\item{min_VDB}{}
+\item{DP_min}{TODO}
+
+\item{DP_max}{TODO}
+
+\item{ref_call}{TODO}
+
+\item{alt_call}{TODO}
+
+\item{overlaps}{TODO}
+
+\item{min_VDB}{TODO}
 }
 \value{
 Filtered snp array

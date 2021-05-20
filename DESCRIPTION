@@ -37,4 +37,5 @@ Imports:
     IRanges,
     here,
     dplyr,
-    ggplot2
+    ggplot2,
+    GenomicRanges

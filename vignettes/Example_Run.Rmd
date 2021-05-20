@@ -34,7 +34,7 @@ snpsGeno[1:5,1:5]
 
 ## Prep RNA data
 ### Filter "snps called" data
-```{r, eval=FALSE}
+```{r}
 data(called)
 dim(called)
 called_filter <- filter_called(called)
@@ -42,7 +42,7 @@ dim(called_filter)
 ```
 
 ### Create snpsGeno2 and snpsCalled
-```{r, eval=FALSE}
+```{r}
 snpsRNA <- make_snpsRNA(genotyped, called_filtered)
 print("Matching Genotype snps")
 snpsRNA$snpsGeno2[1:5,1:5]
@@ -52,12 +52,12 @@ snpsRNA$snpsCalled[1:5,1:5]
 
 # Build Correlation Tables
 ## DNA vs. DNA
-```{r, eval=FALSE}
+```{r}
 brain_sentrix <- read.csv(here("Data","brain_sentrix.csv"))
 corLong_dna_dna <- make_corLong(snpsGeno,BrainTable1=brain_sentrix)
 head(corLong_dna_dna)
 ```
-```{r, eval=FALSE}
+```{r}
 corLong_dna_dna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -68,7 +68,7 @@ corLong_dna_dna %>%
 
 
 ## RNA vs. RNA
-```{r, eval=FALSE}
+```{r}
 pd_swap <- read.csv(here("Data","pd_swap.csv"))
 corLong_rna_rna <- make_corLong(snps1 = snpsRNA$snpsCalled, 
                                 BrainTable1 = pd_swap,
@@ -76,7 +76,7 @@ corLong_rna_rna <- make_corLong(snps1 = snpsRNA$snpsCalled,
 head(corLong_rna_rna)
 ```
 
-```{r, eval=FALSE}
+```{r}
 corLong_rna_rna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -85,7 +85,7 @@ corLong_rna_rna %>%
 ```
 
 ## DNA vs. RNA
-```{r, eval=FALSE}
+```{r}
 corLong_dna_rna <- make_corLong(snps1 = snpsRNA$snpsGeno2, 
                                 snps2 = snpsRNA$snpsCalled, 
                                 BrainTable1 = brain_sentrix,
@@ -96,7 +96,7 @@ corLong_dna_rna <- make_corLong(snps1 = snpsRNA$snpsGeno2,
 head(corLong_dna_rna)
 ```
 
-```{r, eval=FALSE}
+```{r}
 corLong_dna_rna %>% 
   filter(row_BrNum == col_BrNum) %>%
   ggplot(aes(x = cor)) +
@@ -105,7 +105,7 @@ corLong_dna_rna %>%
 ```
 
 # Run Grouper
-```{r, eval=FALSE}
+```{r}
 corLong_dna_dna2 <- corLong_dna_dna %>% filter(cor > 0.6)
 dna_dna_groups <- grouper(corLong_dna_dna2)
 length(dna_dna_groups)
