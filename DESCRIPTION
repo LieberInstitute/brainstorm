@@ -12,7 +12,7 @@ Description: What the package does (one paragraph).
 License: Artistic-2.0
 URL: https://github.com/joshstolz/brainstorm
 BugReports: https://support.bioconductor.org/t/brainstorm
-biocViews: Software
+biocViews: Software, SNP, RNAseq, Preprocessing, QualityControl, GenotypingArray
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
