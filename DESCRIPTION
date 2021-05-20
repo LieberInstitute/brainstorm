@@ -24,7 +24,9 @@ Suggests:
     BiocStyle,
     RefManageR,
     sessioninfo,
-    rmarkdown
+    rmarkdown,
+    ggplot2,
+    here
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
@@ -35,7 +37,5 @@ Imports:
     VariantAnnotation,
     Biostrings,
     IRanges,
-    here,
     dplyr,
-    ggplot2,
     GenomicRanges

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, eval=TRUE}
 library(brainstorm)
 library(VariantAnnotation)
 library(here)
