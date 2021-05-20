@@ -38,7 +38,13 @@ x <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, BrainTable2 = t
 
 snpsGeno <- make_snpsGeno(genotyped)
 snpsGeno[1:5, 1:5]
-brain_sentrix <- read.csv("Data/brain_sentrix.csv")
+brain_sentrix <-
+    read.csv(system.file(
+        "extdata",
+        "brain_sentrix.csv",
+        package = "brainstorm",
+        mustWork = TRUE
+    ))
 corLongtest <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 
 corLongtest <- make_corlong

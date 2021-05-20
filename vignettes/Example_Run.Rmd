@@ -53,7 +53,13 @@ snpsRNA$snpsCalled[1:5, 1:5]
 # Build Correlation Tables
 ## DNA vs. DNA
 ```{r}
-brain_sentrix <- read.csv(here("Data", "brain_sentrix.csv"))
+brain_sentrix <-
+    read.csv(system.file(
+        "extdata",
+        "brain_sentrix.csv",
+        package = "brainstorm",
+        mustWork = TRUE
+    ))
 corLong_dna_dna <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 head(corLong_dna_dna)
 ```
