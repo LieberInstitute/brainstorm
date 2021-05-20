@@ -24,6 +24,9 @@
 #' corLongtest <- make_corlong
 #' @importFrom dplyr left_join
 make_corLong <- function(snps1, snps2 = snps1, BrainTable1, BrainTable2 = BrainTable1, ID_col1 = "ID", ID_col2 = ID_col1) {
+    # RCMD check fix
+    cor <- NULL
+
     snpCor <- cor(snps1, snps2, use = "pairwise.comp")
     rownames(snpCor) <- colnames(snps1)
     colnames(snpCor) <- colnames(snps2)

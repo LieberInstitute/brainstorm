@@ -27,6 +27,9 @@ grouper <- function(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample
 }
 
 .grouper <- function(samples, corTable, cutoff, s1, s2) {
+    # RCMD check fix
+    cor <- NULL
+
     ct <- subset(corTable, cor >= cutoff & (corTable[[s1]] %in% samples | corTable[[s2]] %in% samples))
     new_samples <- unique(c(ct[[s1]], ct[[s2]]))
 

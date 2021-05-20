@@ -22,7 +22,7 @@
 make_snpsRNA <- function(genotyped, called_filtered) {
 
     ## subset to intersection
-    n <- intersect(rownames(called_filter), names(genotyped))
+    n <- intersect(rownames(called_filtered), names(genotyped))
     genotyped <- genotyped[n, ]
     called <- called[n, ]
     message("# matching snps: ", table(unlist(Biostrings::nchar(VariantAnnotation::alt(called)))))
