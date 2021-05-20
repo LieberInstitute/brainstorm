@@ -2,7 +2,6 @@
 #'
 #' Create groups of sample from a cor table with correlation >= cutoff
 #'
-#' @param samples list of samples (BrNum and/or RNum) to subset cor table by
 #' @param corTable Table of paiwise correlation between samples
 #' @param cutoff corrlation threshold for samples to be grouped together
 #' @param s1 Name of first column that contains sample names

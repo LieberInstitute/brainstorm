@@ -14,8 +14,6 @@ grouper(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample")
 \item{s1}{Name of first column that contains sample names}
 
 \item{s2}{Name of second column that contains sample names}
-
-\item{samples}{list of samples (BrNum and/or RNum) to subset cor table by}
 }
 \value{
 List of groups found in the cor table
