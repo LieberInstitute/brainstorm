@@ -10,7 +10,8 @@ coverage](https://codecov.io/gh/LieberInstitute/brainstorm_package/branch/master
 [![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm_package/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm_package/actions)
 <!-- badges: end -->
 
-The goal of `brainstorm` is to …
+The goal of `brainstorm` is to match genotype and RNA-seq data to
+conform IDs of brain samples.
 
 ## Installation instructions
 
@@ -31,6 +32,15 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 BiocManager::install("joshstolz/brainstorm")
 ```
+
+## Workflow
+
+### Step 1. Prepare the snp Data
+
+![Data Prep](images/flow_data_prep.png) \#\#\# Step 2. Correlate the
+Data and Identify Groups ![Corelation &
+Grouping](images/flow_cor_group.png) \#\#\# Step 3. Identify and Resolve
+Swaps
 
 ## Example
 
