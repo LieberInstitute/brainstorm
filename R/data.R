@@ -1,16 +1,16 @@
-#' TODO genotyped
+#' genotyped
 #'
-#' TODO Description.
+#' Loaded vcf object containing genotypes
 #'
 #' @format A CollapsedVCF object.
 #' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/genotyped.R>
 "genotyped"
 
-#' TODO called
+#' called
 #'
-#' TODO Description.
+#' Loaded vcf object containing called genotypes from RNA data
 #'
-#' @format TODO.
+#' @format A CollapsedVCF object.
 #' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/called.R
 #"called" ## TODO: uncomment this line once data/called.rda is added to the repo
 
