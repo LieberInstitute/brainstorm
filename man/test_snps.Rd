@@ -3,24 +3,17 @@
 \docType{data}
 \name{test_snps}
 \alias{test_snps}
-\title{TODO called}
+\title{Test SNP matrix}
 \format{
-TODO.
-
 A \code{matrix} with zeros and ones representing the genotypes.
 }
 \source{
-<https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/called.R
-Test SNP matrix
-
-A test SNP input \code{matrix}.
-
 \url{https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/test_snps.R}
 }
 \usage{
 test_snps
 }
 \description{
-TODO Description.
+A test SNP input \code{matrix}.
 }
 \keyword{datasets}

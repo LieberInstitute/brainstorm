@@ -1,19 +1,3 @@
-#' genotyped
-#'
-#' Loaded vcf object containing genotypes
-#'
-#' @format A CollapsedVCF object.
-#' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/genotyped.R>
-"genotyped"
-
-#' called
-#'
-#' Loaded vcf object containing called genotypes from RNA data
-#'
-#' @format A CollapsedVCF object.
-#' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/called.R
-#"called" ## TODO: uncomment this line once data/called.rda is added to the repo
-
 #' Test SNP matrix
 #'
 #' A test SNP input `matrix`.
@@ -30,4 +14,19 @@
 #' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/test_BrTable.R>
 "test_BrTable"
 
+#'Example RNA Genotype Data
+#'
+#'TOPMed Imputed genotype data (746 snps) for the samples in pd_example
+#'
+#'@format `CollapsedVCF`
+#'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
+"snpsGeno_example"
+
+#'Example Phenotype Table
+#'
+#'Phenotype data for 42 samples
+#'
+#'@format `data.frame`
+#'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
+"pd_example"
 
