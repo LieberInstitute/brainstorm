@@ -32,7 +32,8 @@ Suggests:
     sessioninfo,
     rmarkdown,
     ggplot2,
-    here
+    here,
+    pheatmap
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
