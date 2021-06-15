@@ -143,17 +143,45 @@ corLong_dna_rna %>%
 
 # Run Grouper
 ```{r run_grouper}
-corLong_dna_dna2 <- corLong_dna_dna %>% filter(cor > 0.6)
-dna_dna_groups <- grouper(corLong_dna_dna2)
+dna_dna_groups <- grouper(corLong_dna_dna)
 length(dna_dna_groups)
-table(unlist(purrr::map(dna_dna_groups, "nBrNum")))
+table(unlist(purrr::map_int(dna_dna_groups, "nBrNum")))
 ```
 
 
 ## Find problem groups & samples
 ```{r find_problem_groups}
-dna_dna_prob <- keep(dna_dna_groups, ~ .x$nBrNum > 1)
-length(dna_dna_prob)
+dna_multi_br <- keep(dna_dna_groups, ~ .x$nBrNum > 1)
+length(dna_multi_br)
+```
+
+
+```{r run_grouper_rna}
+rna_rna_groups <- grouper(corLong_rna_rna)
+length(rna_rna_groups)
+
+message("How many samples in each group?")
+table(purrr::map_int(rna_rna_groups, "n"))
+
+message("How many Brains in each group?")
+table(purrr::map_int(rna_rna_groups, "nBrNum"))
+```
+
+
+```{r run_grouper_dna_rna}
+dna_rna_groups <- grouper(corLong_dna_rna)
+message("How many groups?")
+length(dna_rna_groups)
+
+message("How many samples in each group?")
+table(purrr::map_int(dna_rna_groups, "n"))
+
+message("How many Brains in each group?")
+table(purrr::map_int(dna_rna_groups, "nBrNum"))
+```
+
+```{r find_multi_sample_groups}
+multi_samples <- keep(rna_rna_groups, ~ .x$n > 1)
 ```
 
 

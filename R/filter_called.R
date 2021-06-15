@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' dim(snpsCalled_VCF)
-#' snosCalled_filter <- filter_called(snpsCalled_VCF)
+#' snpsCalled_filter <- filter_called(snpsCalled_VCF)
 #' dim(snpsCalled_filter)
 #' @importFrom VariantAnnotation info ref alt
 #' @importFrom Biostrings nchar

@@ -13,12 +13,18 @@
 #' @examples
 #' cor_test <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, ID_col1 = "Sample")
 #' g <- grouper(cor_test)
+#'
+#' snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_VCF)
+#' pd_simple <- pd_example[,1:4]
+#' corLong_rna <- make_corLong(snpsRNA$snpsCalled, BrainTable1 = pd_simple, ID_col1 = "SAMPLE_ID")
+#' groups_rna <- grouper(corLong_rna)
+#' table(map_int(groups_rna, "n"))
 #' @importFrom purrr map
 grouper <- function(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample") {
     .check_cols(table = corTable, check_colnames = c(s1, s2), table_name = "corTable")
 
     samples <- unique(c(corTable[[s1]], corTable[[s2]]))
-    message(length(samples))
+    message("grouping ",length(samples), " samples...\n")
 
     groups <- purrr::map(samples, ~ .grouper(.x, corTable, cutoff, s1, s2))
     groups <- unique(groups)
@@ -35,14 +41,27 @@ grouper <- function(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample
     if (!all(new_samples %in% samples)) {
         return(.grouper(new_samples, corTable, cutoff, s1, s2))
     } else {
-
+        one_sample <- length(samples) == 1
+        ct2 <- ct
+        if(one_sample){
+            ct2 <- subset(corTable, corTable[[s1]] == samples | corTable[[s2]] == samples)
+        }
         ## make record table
-        record_row <- ct[, grepl("row_", colnames(ct))]
-        record_col <- ct[, grepl("col_", colnames(ct))]
+        record_row <- ct2[, grepl("row_", colnames(ct2))]
+        record_col <- ct2[, grepl("col_", colnames(ct2))]
+
         colnames(record_row) <- gsub("row_", "", colnames(record_row))
         colnames(record_col) <- gsub("col_", "", colnames(record_col))
 
-        record <- cbind(record_row, record_col)
+        common_colnames <- intersect(colnames(record_row), colnames(record_col))
+
+        record <- rbind(record_row[,common_colnames], record_col[,common_colnames])
+
+        if(one_sample){
+            record <- subset(record, sample == samples)
+        }
+        rownames(record) <- NULL
+        record <- unique(record)
 
         bn <- unique(record[["BrNum"]])
         bn <- bn[order(bn)]

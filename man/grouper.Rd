@@ -24,4 +24,10 @@ Create groups of sample from a cor table with correlation >= cutoff
 \examples{
 cor_test <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, ID_col1 = "Sample")
 g <- grouper(cor_test)
+
+snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_VCF)
+pd_simple <- pd_example[,1:4]
+corLong_rna <- make_corLong(snpsRNA$snpsCalled, BrainTable1 = pd_simple, ID_col1 = "SAMPLE_ID")
+groups_rna <- grouper(corLong_rna)
+table(map_int(groups_rna, "n"))
 }
