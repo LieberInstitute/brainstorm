@@ -22,20 +22,25 @@ library(here)
 library(dplyr)
 library(ggplot2)
 library(purrr)
+library(pheatmap)
 ```
 
 #Prep Data
 ## Prep DNA data
 ```{r "prep snpsGeno"}
-snpsGeno_VCF
 snpsGeno <- make_snpsGeno(snpsGeno_VCF)
 snpsGeno[1:5, 1:5]
 ```
 
+
 ## Prep RNA data
 ### Filter "snps called" data
 ```{r}
-called <- readVcf(here("data", "mergedVariants.vcf.gz"), "hg38")
+# Make sure colnames are all IDs in pd table
+all(colnames(called)  %in% pd_example$SAMPLE_ID)
+colnames(called) <- ss(colnames(called),"_accepted")
+all(colnames(called)  %in% pd_example$SAMPLE_ID)
+
 dim(called)
 called_filter <- filter_called(called)
 dim(called_filter)
@@ -43,15 +48,32 @@ dim(called_filter)
 
 ### Create snpsGeno2 and snpsCalled
 ```{r}
-snpsRNA <- make_snpsRNA(genotyped, called_filter)
+snpsRNA <- make_snpsRNA(snpsGeno_VCF, called_filter)
 print("Matching Genotype snps")
 snpsRNA$snpsGeno2[1:5, 1:5]
-print("Called RNA snsp")
+print("Called RNA snps")
 snpsRNA$snpsCalled[1:5, 1:5]
 ```
 
 # Build Correlation Tables
 ## DNA vs. DNA
+
+
+```{r cor_basic}
+basic_cor <- cor(snpsRNA$snpsCalled, use = "pairwise.comp")
+basic_cor[1:5,1:5]
+```
+
+```{r check_correlations_pheatmap, echo=FALSE}
+pheatmap(
+    basic_cor,
+    cluster_rows = FALSE,
+    show_rownames = FALSE,
+    cluster_cols = FALSE,
+    show_colnames = FALSE
+)
+```
+
 ```{r}
 # brain_sentrix <-
 #     read.csv(system.file(
@@ -61,18 +83,16 @@ snpsRNA$snpsCalled[1:5, 1:5]
 #         mustWork = TRUE
 #     ))
 
-brain_sentrix <- read.csv(here("Data","brain_sentrix_speaqeasy.csv"))
+brain_sentrix
 all(colnames(snpsGeno) %in% brain_sentrix$ID)
 
 corLong_dna_dna <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 head(corLong_dna_dna)
 ```
+
 ```{r}
 corLong_dna_dna %>%
-    filter(row_BrNum == col_BrNum) %>%
-    ggplot(aes(x = cor)) +
-    geom_density() +
-    geom_vline(xintercept = 0.59, color = "red", linetype = "dashed")
+    filter(row_BrNum == col_BrNum) 
 ```
 
 
@@ -80,9 +100,11 @@ corLong_dna_dna %>%
 ## RNA vs. RNA
 ```{r}
 # pd_swap <- read.csv(here("data", "pd_swap.csv"))
+pd_simple <- pd_example[,c("SAMPLE_ID", "RNum", "BrNum", "BrainRegion")]
+
 corLong_rna_rna <- make_corLong(
     snps1 = snpsRNA$snpsCalled,
-    BrainTable1 = pd_example,
+    BrainTable1 = pd_simple,
     ID_col1 = "SAMPLE_ID"
 )
 head(corLong_rna_rna)
@@ -90,7 +112,7 @@ head(corLong_rna_rna)
 
 ```{r}
 corLong_rna_rna %>%
-    filter(row_BrNum == col_BrNum) %>%
+    # filter(row_BrNum == col_BrNum) %>%
     ggplot(aes(x = cor)) +
     geom_density() +
     geom_vline(xintercept = 0.59, color = "red", linetype = "dashed")
@@ -102,7 +124,7 @@ corLong_dna_rna <- make_corLong(
     snps1 = snpsRNA$snpsGeno2,
     snps2 = snpsRNA$snpsCalled,
     BrainTable1 = brain_sentrix,
-    BrainTable2 = pd_example,
+    BrainTable2 = pd_simple,
     ID_col1 = "ID",
     ID_col2 = "SAMPLE_ID"
 )

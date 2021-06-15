@@ -36,7 +36,7 @@ Filtered snp array
 Filter the Called snp array
 }
 \examples{
-dim(snpsGeno_example)
-snpsGeno_filter <- filter_called(snpsGeno_example)
-dim(snpsGeno_example)
+dim(called)
+called_filter <- filter_called(called)
+dim(called_filter)
 }
