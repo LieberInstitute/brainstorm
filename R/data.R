@@ -35,7 +35,7 @@
 #'Imputed snps from RNA data, 665 snps for 42 samples
 #'@format `CollapsedVCF`
 #'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
-"called"
+"snpsCalled_VCF"
 
 #'Example Phenotype Table
 #'

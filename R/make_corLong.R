@@ -14,20 +14,9 @@
 #' @export
 #'
 #' @examples
-#' x <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, BrainTable2 = test_BrTable, ID_col1 = "Sample", ID_col2 = "Sample")
-#'
-#' snpsGeno <- make_snpsGeno(genotyped)
+#' snpsGeno <- make_snpsGeno(snpsGeno_VCF)
 #' snpsGeno[1:5, 1:5]
-#' brain_sentrix <-
-#'     read.csv(system.file(
-#'         "extdata",
-#'         "brain_sentrix.csv",
-#'         package = "brainstorm",
-#'         mustWork = TRUE
-#'     ))
-#' corLongtest <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
-#'
-#' corLongtest <- make_corlong
+#' corLong <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 #' @importFrom dplyr left_join
 #' @importFrom stats cor
 make_corLong <- function(snps1, snps2 = snps1, BrainTable1, BrainTable2 = BrainTable1, ID_col1 = "ID", ID_col2 = ID_col1) {

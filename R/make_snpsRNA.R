@@ -11,8 +11,8 @@
 #'
 #' @examples
 #'
-#' called_filter <- filter_called(called)
-#' snpsRNA <- make_snpsRNA(genotyped, called_filtered)
+#' snpsCalled_filter <- filter_called(snpsCalled_VCF)
+#' snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_filtered)
 #' snpsRNA$snpsGeno2[1:5, 1:5]
 #' snpsRNA$snpsCalled[1:5, 1:5]
 #' @importFrom SummarizedExperiment rowRanges

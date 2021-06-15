@@ -34,25 +34,25 @@ snpsGeno[1:5, 1:5]
 
 
 ## Prep RNA data
-### Filter "snps called" data
+### Filter "snps snpsCalled_VCF" data
 ```{r}
 # Make sure colnames are all IDs in pd table
-all(colnames(called)  %in% pd_example$SAMPLE_ID)
-colnames(called) <- ss(colnames(called),"_accepted")
-all(colnames(called)  %in% pd_example$SAMPLE_ID)
+all(colnames(snpsCalled_VCF)  %in% pd_example$SAMPLE_ID)
+colnames(snpsCalled_VCF) <- ss(colnames(snpsCalled_VCF),"_accepted")
+all(colnames(snpsCalled_VCF)  %in% pd_example$SAMPLE_ID)
 
-dim(called)
-called_filter <- filter_called(called)
-dim(called_filter)
+dim(snpsCalled_VCF)
+snpsCalled_filter <- filter_snpsCalled_VCF(snpsCalled_VCF)
+dim(snpsCalled_filter)
 ```
 
-### Create snpsGeno2 and snpsCalled
+### Create snpsGeno2 and snpssnpsCalled_VCF
 ```{r}
-snpsRNA <- make_snpsRNA(snpsGeno_VCF, called_filter)
+snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_filter)
 print("Matching Genotype snps")
 snpsRNA$snpsGeno2[1:5, 1:5]
-print("Called RNA snps")
-snpsRNA$snpsCalled[1:5, 1:5]
+print("snpsCalled_VCF RNA snps")
+snpsRNA$snpssnpsCalled_VCF[1:5, 1:5]
 ```
 
 # Build Correlation Tables
@@ -60,7 +60,7 @@ snpsRNA$snpsCalled[1:5, 1:5]
 
 
 ```{r cor_basic}
-basic_cor <- cor(snpsRNA$snpsCalled, use = "pairwise.comp")
+basic_cor <- cor(snpsRNA$snpssnpsCalled_VCF, use = "pairwise.comp")
 basic_cor[1:5,1:5]
 ```
 
@@ -103,7 +103,7 @@ corLong_dna_dna %>%
 pd_simple <- pd_example[,c("SAMPLE_ID", "RNum", "BrNum", "BrainRegion")]
 
 corLong_rna_rna <- make_corLong(
-    snps1 = snpsRNA$snpsCalled,
+    snps1 = snpsRNA$snpssnpsCalled_VCF,
     BrainTable1 = pd_simple,
     ID_col1 = "SAMPLE_ID"
 )
@@ -122,7 +122,7 @@ corLong_rna_rna %>%
 ```{r}
 corLong_dna_rna <- make_corLong(
     snps1 = snpsRNA$snpsGeno2,
-    snps2 = snpsRNA$snpsCalled,
+    snps2 = snpsRNA$snpssnpsCalled_VCF,
     BrainTable1 = brain_sentrix,
     BrainTable2 = pd_simple,
     ID_col1 = "ID",

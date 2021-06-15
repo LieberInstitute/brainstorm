@@ -36,7 +36,7 @@ Filtered snp array
 Filter the Called snp array
 }
 \examples{
-dim(called)
-called_filter <- filter_called(called)
-dim(called_filter)
+dim(snpsCalled_VCF)
+snosCalled_filter <- filter_called(snpsCalled_VCF)
+dim(snpsCalled_filter)
 }
