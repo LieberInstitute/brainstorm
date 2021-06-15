@@ -27,15 +27,15 @@ library(purrr)
 #Prep Data
 ## Prep DNA data
 ```{r "prep snpsGeno"}
-genotyped <- readVcf(here("data", "LIBD_Brain_merged_topmed_RNASeq_annotated_variants_043020.vcf"), "hg38")
-snpsGeno <- make_snpsGeno(genotyped)
+snpsGeno_VCF
+snpsGeno <- make_snpsGeno(snpsGeno_VCF)
 snpsGeno[1:5, 1:5]
 ```
 
 ## Prep RNA data
 ### Filter "snps called" data
 ```{r}
-data(called)
+called <- readVcf(here("data", "mergedVariants.vcf.gz"), "hg38")
 dim(called)
 called_filter <- filter_called(called)
 dim(called_filter)
@@ -43,7 +43,7 @@ dim(called_filter)
 
 ### Create snpsGeno2 and snpsCalled
 ```{r}
-snpsRNA <- make_snpsRNA(genotyped, called_filtered)
+snpsRNA <- make_snpsRNA(genotyped, called_filter)
 print("Matching Genotype snps")
 snpsRNA$snpsGeno2[1:5, 1:5]
 print("Called RNA snsp")
@@ -53,13 +53,17 @@ snpsRNA$snpsCalled[1:5, 1:5]
 # Build Correlation Tables
 ## DNA vs. DNA
 ```{r}
-brain_sentrix <-
-    read.csv(system.file(
-        "extdata",
-        "brain_sentrix.csv",
-        package = "brainstorm",
-        mustWork = TRUE
-    ))
+# brain_sentrix <-
+#     read.csv(system.file(
+#         "extdata",
+#         "brain_sentrix.csv",
+#         package = "brainstorm",
+#         mustWork = TRUE
+#     ))
+
+brain_sentrix <- read.csv(here("Data","brain_sentrix_speaqeasy.csv"))
+all(colnames(snpsGeno) %in% brain_sentrix$ID)
+
 corLong_dna_dna <- make_corLong(snpsGeno, BrainTable1 = brain_sentrix)
 head(corLong_dna_dna)
 ```
@@ -75,10 +79,10 @@ corLong_dna_dna %>%
 
 ## RNA vs. RNA
 ```{r}
-pd_swap <- read.csv(here("data", "pd_swap.csv"))
+# pd_swap <- read.csv(here("data", "pd_swap.csv"))
 corLong_rna_rna <- make_corLong(
     snps1 = snpsRNA$snpsCalled,
-    BrainTable1 = pd_swap,
+    BrainTable1 = pd_example,
     ID_col1 = "SAMPLE_ID"
 )
 head(corLong_rna_rna)
@@ -98,7 +102,7 @@ corLong_dna_rna <- make_corLong(
     snps1 = snpsRNA$snpsGeno2,
     snps2 = snpsRNA$snpsCalled,
     BrainTable1 = brain_sentrix,
-    BrainTable2 = pd_swap,
+    BrainTable2 = pd_example,
     ID_col1 = "ID",
     ID_col2 = "SAMPLE_ID"
 )

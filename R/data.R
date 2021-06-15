@@ -14,13 +14,28 @@
 #' @source <https://github.com/LieberInstitute/brainstorm/blob/master/data-raw/test_BrTable.R>
 "test_BrTable"
 
-#'Example RNA Genotype Data
+#'Example Genotype Data
 #'
-#'TOPMed Imputed genotype data (746 snps) for the samples in pd_example
+#'TOPMed Genotype data (746 snps) for the 42 samples in brain_sentrix
 #'
 #'@format `CollapsedVCF`
 #'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
-"snpsGeno_example"
+"snpsGeno_VCF"
+
+#' Brain Sentrix Table
+#'
+#' Genotype sample sheet for 42 samples from 39 unique brains
+#'
+#'@format `data.frame`
+#'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
+"brain_sentrix"
+
+#' Example RNA snps (imputed Genotypes)
+#'
+#'Imputed snps from RNA data, 665 snps for 42 samples
+#'@format `CollapsedVCF`
+#'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
+"called"
 
 #'Example Phenotype Table
 #'
@@ -29,4 +44,6 @@
 #'@format `data.frame`
 #'@source \url{https://github.com/LieberInstitute/SPEAQeasy-example}
 "pd_example"
+
+
 

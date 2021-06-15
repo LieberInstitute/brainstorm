@@ -48,7 +48,9 @@ BiocManager::install("joshstolz/brainstorm")
 
 ### Step 2. Correlate the Data and Identify Groups 
 
-![Correlation & Grouping](images/flow_cor_group.png)   
+![Correlation & Grouping](images/flow_cor_group.png)  
+
+
 
 ### Step 3. Identify and Resolve Swaps
 

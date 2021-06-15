@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @examples
-#' dim(called)
-#' called_filter <- filter_called(called)
-#' dim(called_filter)
+#' dim(snpsGeno_example)
+#' snpsGeno_filter <- filter_called(snpsGeno_example)
+#' dim(snpsGeno_example)
 #' @importFrom VariantAnnotation info ref alt
 #' @importFrom Biostrings nchar
 #' @importFrom IRanges elementNROWS
