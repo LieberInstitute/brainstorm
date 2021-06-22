@@ -14,11 +14,11 @@
 #' cor_test <- make_corLong(snps1 = test_snps, BrainTable1 = test_BrTable, ID_col1 = "Sample")
 #' g <- grouper(cor_test)
 #'
-#' snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_VCF)
+#' snpsCalled_filter <- filter_called(snpsCalled_VCF)
+#' snpsRNA <- make_snpsRNA(snpsGeno_VCF, snpsCalled_filter)
 #' pd_simple <- pd_example[,1:4]
 #' corLong_rna <- make_corLong(snpsRNA$snpsCalled, BrainTable1 = pd_simple, ID_col1 = "SAMPLE_ID")
 #' groups_rna <- grouper(corLong_rna)
-#' table(map_int(groups_rna, "n"))
 #' @importFrom purrr map
 grouper <- function(corTable, cutoff = 0.59, s1 = "row_sample", s2 = "col_sample") {
     .check_cols(table = corTable, check_colnames = c(s1, s2), table_name = "corTable")
