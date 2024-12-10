@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/LieberInstitute/brainstorm/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/brainstorm?branch=master)
-[![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/brainstorm/actions)
+[![R-CMD-check-bioc](https://github.com/LieberInstitute/brainstorm/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/brainstorm/actions/workflows/check-bioc.yml)
 <!-- badges: end -->
 
 The goal of `brainstorm` is to match genotype and RNA-seq data to conform IDs of brain samples.
